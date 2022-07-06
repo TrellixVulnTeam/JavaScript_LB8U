@@ -97,7 +97,7 @@ class Productos{
         this.precio = precio
         this.stock = stock
     }
-    imprimir(){
+    imprimir(objeto){
         for(const clave in objeto){
             alert(`${clave} : ${objeto[clave]}`)
         }
@@ -115,11 +115,11 @@ for(const prop in producto1){
 const nombrecliente = prompt("ingrese su nombre")
 alert("hola " + nombrecliente + " bienvenido a JMR")
 
-producto = prompt(`Que producto va a querer llevar? opcion 1 ${producto1.nombre} $ ${producto1.precio} opcion 2 ${producto2.nombre} $ ${producto2.precio} opcion 3 ${producto3.nombre} $ ${producto3.precio}`)
+let producto = parseInt(prompt(`Que producto va a querer llevar? opcion 1 ${producto1.nombre} $ ${producto1.precio} opcion 2 ${producto2.nombre} $ ${producto2.precio} opcion 3 ${producto3.nombre} $ ${producto3.precio} opcion 4 ${producto4.nombre} $ ${producto4.precio}`))
 
 while(producto !=1 && producto != 2 && producto != 3 && producto !=4) {
     alert("el producto no existe")
-    producto = prompt(`Que producto va a querer llevar? opcion 1 ${producto1.nombre} $ ${producto1.precio} opcion 2 ${producto2.nombre} $ ${producto2.precio} opcion 3 ${producto3.nombre} $ ${producto3.precio} opcion 4 ${producto4.nombre} $ ${producto4.precio}`)
+    producto = parseInt(prompt(`Que producto va a querer llevar? opcion 1 ${producto1.nombre} $ ${producto1.precio} opcion 2 ${producto2.nombre} $ ${producto2.precio} opcion 3 ${producto3.nombre} $ ${producto3.precio} opcion 4 ${producto4.nombre} $ ${producto4.precio}`))
 }
 if(producto == 1 ){
     precio = producto1.precio
@@ -131,10 +131,16 @@ if(producto == 1 ){
     precio = producto4.precio
 }
 
-alert ("El precio del producto es "+ precio)
+alert (`El precio del producto es ${precio}`)
 
 
 //Pago//
+let productoPrecio=0
+let meses
+let banco
+let interes
+let precioConInteres
+let cuota
 ingresarDatos()
 
 function ingresarDatos (){
@@ -142,17 +148,17 @@ function ingresarDatos (){
     let meses = parseInt(prompt("Ingresa la cantidad de cuotas"))
     let banco = prompt("Ingresa de que banco es su tarjeta")
     let interes = calcInteres(banco)
-    let precioconinteres = Productoconinteres(productoprecio,interes)
-    let cuota = calcCuota(precioconinteres,meses)
-    mostrar(precioconinteres,banco,interes,cuota,meses)
+    let precioConInteres = productoConInteres(productoprecio,interes)
+    let cuota = calcCuota(precioConInteres,meses)
+    mostrar(precioConInteres,banco,interes,cuota,meses)
 }
-function Productoconinteres (productoprecio,interes){
+function productoConInteres (productoprecio,interes){
     let precioconinteres = productoprecio * (1 + interes/100)
     return precioconinteres.toFixed(2)
 }
 
-function calcCuota (precioconinteres,meses){
-    let cuota = precioconinteres / meses
+function calcCuota (precioConInteres,meses){
+    cuota = precioConInteres / meses
     return cuota.toFixed(2)
 }
 
@@ -165,11 +171,11 @@ function calcInteres (banco){
         case "naranja":
             return 15
         default:
-            0
+            return 0
     }
 }
 
 
-function mostrar(precioconinteres,banco,interes,cuota,meses){
-    alert(`el precio del producto es de $${precioconinteres} con la tarjeta del banco ${banco} tiene un interes de ${interes}% a pagar en cuotas de $${cuota} durante ${meses} meses`)
+function mostrar(precioConInteres,banco,interes,cuota,meses){
+    alert(`el precio del producto es de $${precioConInteres} con la tarjeta del banco ${banco} tiene un interes de ${interes}% a pagar en cuotas de $${cuota} durante ${meses} meses`)
 }
