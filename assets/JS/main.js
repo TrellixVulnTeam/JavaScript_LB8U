@@ -144,16 +144,16 @@ let cuota
 ingresarDatos()
 
 function ingresarDatos (){
-    let productoprecio = precio
+    let productoPrecio = precio
     let meses = parseInt(prompt("Ingresa la cantidad de cuotas"))
     let banco = prompt("Ingresa de que banco es su tarjeta")
     let interes = calcInteres(banco)
-    let precioConInteres = productoConInteres(productoprecio,interes)
+    let precioConInteres = productoConInteres(productoPrecio,interes)
     let cuota = calcCuota(precioConInteres,meses)
     mostrar(precioConInteres,banco,interes,cuota,meses)
 }
-function productoConInteres (productoprecio,interes){
-    let precioconinteres = productoprecio * (1 + interes/100)
+function productoConInteres (productoPrecio,interes){
+    let precioconinteres = productoPrecio * (1 + interes/100)
     return precioconinteres.toFixed(2)
 }
 
