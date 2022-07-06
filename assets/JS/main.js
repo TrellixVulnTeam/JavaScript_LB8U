@@ -57,34 +57,119 @@
 // let vuelto = dinero - precio
 // alert("Su pago es de "+ precio + " y su cambio es "+ vuelto)
 
+/*MASCOTA comer beber y dormir
 let nombre= prompt("Poneme un nombre")
 alert("Vaya que me has dado!"+ nombre)
 
 let accion = prompt("Que queres que haga?, (comer,baño,amor o dormir)").toLowerCase()
-while(accion != "dormir"){
-    if(accion == "comer"){
-        alert("ñam ñam que rico!")
-    }else if (accion == "baño"){
-        alert("gracias!")
-    }else if (accion == "amor"){
-        alert("Te amo amiguito")
-    }else {
-        alert("que estas diciendo willy?")
-    }
-//     switch(accion){
-//         case "comer":
-//             alert("ñam ñam que rico!")
-//             break
-//         case "baño":
-//             alert("Gracias!")
-//             break
-//         case "amor":
-//             alert("Te amo amiguito")
-//             break
-//         default:
-//             alert("Que estas diciendo willy?")
-//             break
-//     }
-    accion = prompt("Que queres que haga?, (comer,baño,amor o dormir)").toLowerCase()
+while (accion != "dormir") {
+if (accion == "comer") {
+    alert("ñam ñam que rico!")
+} else if (accion == "baño") {
+    alert("gracias!")
+} else if (accion == "amor") {
+    alert("Te amo amiguito")
+} else {
+    alert("que estas diciendo willy?")
 }
-alert("Buenas noches")
+switch(accion){
+    case "comer":
+        alert("ñam ñam que rico!")
+        break
+    case "baño":
+        alert("Gracias!")
+        break
+    case "amor":
+        alert("Te amo amiguito")
+        break
+    default:
+        alert("Que estas diciendo willy?")
+        break
+}
+accion = prompt("Que queres que haga?, (comer,baño,amor o dormir)").toLowerCase()
+}
+alert("Buenas noches")*/
+
+// Productos //
+class Productos{
+    constructor(nombre,precio,stock){
+        this.nombre = nombre.toUpperCase()
+        this.precio = precio
+        this.stock = stock
+    }
+    imprimir(){
+        for(const clave in objeto){
+            alert(`${clave} : ${objeto[clave]}`)
+        }
+    }
+}
+const producto1 = new Productos("Mochila Pierre Cardin",7500,1)
+const producto2 = new Productos("Mochila Head",6000,2)
+const producto3 = new Productos("Mochila Cruzada de Cuero",8000,3)
+const producto4 = new Productos("Portacelular de cuero",2800,3)
+
+for(const prop in producto1){
+    console.log(producto1[prop])
+}
+
+const nombrecliente = prompt("ingrese su nombre")
+alert("hola " + nombrecliente + " bienvenido a JMR")
+
+producto = prompt(`Que producto va a querer llevar? opcion 1 ${producto1.nombre} $ ${producto1.precio} opcion 2 ${producto2.nombre} $ ${producto2.precio} opcion 3 ${producto3.nombre} $ ${producto3.precio}`)
+
+while(producto !=1 && producto != 2 && producto != 3 && producto !=4) {
+    alert("el producto no existe")
+    producto = prompt(`Que producto va a querer llevar? opcion 1 ${producto1.nombre} $ ${producto1.precio} opcion 2 ${producto2.nombre} $ ${producto2.precio} opcion 3 ${producto3.nombre} $ ${producto3.precio} opcion 4 ${producto4.nombre} $ ${producto4.precio}`)
+}
+if(producto == 1 ){
+    precio = producto1.precio
+} else if (producto == 2) {
+    precio = producto2.precio
+} else if (producto == 3) {
+    precio = producto3.precio
+} else if (producto == 4) {
+    precio = producto4.precio
+}
+
+alert ("El precio del producto es "+ precio)
+
+
+//Pago//
+ingresarDatos()
+
+function ingresarDatos (){
+    let productoprecio = precio
+    let meses = parseInt(prompt("Ingresa la cantidad de cuotas"))
+    let banco = prompt("Ingresa de que banco es su tarjeta")
+    let interes = calcInteres(banco)
+    let precioconinteres = Productoconinteres(productoprecio,interes)
+    let cuota = calcCuota(precioconinteres,meses)
+    mostrar(precioconinteres,banco,interes,cuota,meses)
+}
+function Productoconinteres (productoprecio,interes){
+    let precioconinteres = productoprecio * (1 + interes/100)
+    return precioconinteres.toFixed(2)
+}
+
+function calcCuota (precioconinteres,meses){
+    let cuota = precioconinteres / meses
+    return cuota.toFixed(2)
+}
+
+function calcInteres (banco){
+    switch (banco){
+        case "visa":
+            return 10
+        case "mastercard":
+            return 10
+        case "naranja":
+            return 15
+        default:
+            0
+    }
+}
+
+
+function mostrar(precioconinteres,banco,interes,cuota,meses){
+    alert(`el precio del producto es de $${precioconinteres} con la tarjeta del banco ${banco} tiene un interes de ${interes}% a pagar en cuotas de $${cuota} durante ${meses} meses`)
+}
