@@ -206,18 +206,17 @@ class Productos{
 
 
 const listaProductos = [
-    {nombre: "televisor", precio: 1000, stock: 3},
-    {nombre: "computadora", precio: 2000, stock: 3},
-    {nombre: "ventilador", precio: 5000, stock: 3},
-    {nombre: "tostadora", precio: 200, stock: 3},
-    {nombre: "estufa", precio: 1500, stock: 3},
-    {nombre: "computadora", precio: 3000, stock: 3}
+    {nombre: "Mochila", precio: 1000, stock: 3},
+    {nombre: "Portafolio", precio: 2000, stock: 3},
+    {nombre: "Valija", precio: 5000, stock: 3},
+    {nombre: "Billetera", precio: 200, stock: 3},
+    {nombre: "Bolso", precio: 1500, stock: 3},
 ]
 
 
 
 const agregarProd = () => {
-    let nombre = prompt("Nombre del producto");
+    let nombre = prompt("Nombre del producto del que va a agregar");
     let precio = parseFloat(prompt("Precio del producto"));
     let stock = parseInt(prompt("Cuanto de stock tienes?"));
     let product = new Productos(nombre,precio,stock);
