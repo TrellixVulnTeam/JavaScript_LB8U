@@ -16,6 +16,8 @@ let stockProductos = [
 let contenedorProductos = document.getElementById('contenedor-productos');
 console.log(contenedorProductos);
 
+
+
 function mostrarProductos(){
     stockProductos.forEach(item => {
     let div = document.createElement('div')
@@ -32,3 +34,4 @@ function mostrarProductos(){
 }
 
 mostrarProductos()
+
