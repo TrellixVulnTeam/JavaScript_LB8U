@@ -16,17 +16,17 @@ let stockProductos = [
 let contenedorProductos = document.getElementById('contenedor-productos');
 console.log(contenedorProductos);
 
-
-
 function mostrarProductos(){
     stockProductos.forEach(item => {
     let div = document.createElement('div')
     div.className = 'card col-md-3'
-    div.innerHTML = `<img class="card-img-top align-self-center"src="${item.img}" alt="Card image">
+    div.id = `${item.id}`
+    div.innerHTML = `<img class="product-image card-img-top align-self-center" src="${item.img}" alt="Card image">
                     <div class="card-body">
                         <h4 class="card-title">${item.nombre}</h4>
                         <p class="card-text">${item.descripcion}</p>
-                        <a href="#" class="btn btn-success">$${item.precio}</a>
+                        <button class="add-to-cart add-to-cart btn btn-success">Comprar</button>
+                        Precio<span class ="product-prize"> $${item.precio}</span>
                     </div>
                     `
     contenedorProductos.appendChild(div) 
@@ -35,3 +35,72 @@ function mostrarProductos(){
 
 mostrarProductos()
 
+
+const carrito = document.querySelector("#cart");
+const cartModalOverlay = document.querySelector(".cart-modal-overlay"); 
+
+//abrir
+carrito.addEventListener("click", ()=>{
+    if(cartModalOverlay.classList.contains("open")) {
+        cartModalOverlay.classList.remove("open");
+    } else {
+        cartModalOverlay.classList.add("open");
+    }
+})
+
+//cerrar
+const closeBtn = document.querySelector("#close-btn");
+
+closeBtn.addEventListener("click", ()=>{
+    cartModalOverlay.classList.remove("open");
+})
+///Agregar Elementos al
+
+const addToCart = document.getElementsByClassName("add-to-cart")
+
+for(let boton of addToCart){
+    boton.addEventListener("click", agregarCarrito)
+}
+
+function agregarCarrito(e){
+    let boton = e.target;
+    let producto = boton.parentElement;
+    let prodID = producto.getAttribute("id")
+    let prodName = producto.querySelector("h4").innerText;
+    let precio = producto.querySelector(".product-prize").innerText;
+    // let imagen = producto.querySelector("img").src;
+    // console.log(imagen);
+    agregarElemento(prodID,prodName,precio)
+}
+
+function agregarElemento(prodID,prodName,precio,imagen){
+    let productRow = document.createElement("div");
+    let contenedorProductos = document.querySelector(".product-rows");
+    let elemProducto = `
+        <div class="product-row" id="${prodID}">
+            <span>${prodName}</span>
+            <span class="cart-price">${precio}</span>
+            <button class="remove-btn">Borrar</button>
+        </div>
+    `
+    productRow.innerHTML = elemProducto;
+    contenedorProductos.append(productRow);
+    let botonesBorrar = productRow.querySelectorAll(".remove-btn");
+    for(let boton of botonesBorrar) {
+        boton.addEventListener("click", borrarElemento);
+    }
+    cantElementosCarrito();
+}
+
+function borrarElemento(e) {
+    btn = e.target;
+    btn.parentElement.parentElement.remove();
+    cantElementosCarrito()
+}
+
+function cantElementosCarrito() {
+    let cantidad = document.querySelectorAll(".product-rows > div");
+    let cartQuantity = document.querySelector(".cart-quantity");
+    cartQuantity.innerText = cantidad.length;
+
+}

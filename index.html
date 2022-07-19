@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Rubik&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/style.css">
@@ -19,9 +19,24 @@
 
 <body>
     <!-- NavBar Start-->
-    <div class="container-fluid">
+    <!--  cart modal  -->
+    <div class="cart-modal-overlay">
+        <div class="cart-modal">
+            <i id="close-btn" class="fas fa-times"></i>
+            <h1 class="cart-is-empty">El carrito esta vacio</h1>
+
+            <div class="product-rows">
+            </div>
+            <div class="total">
+                <h1 class="cart-total">TOTAL</h1>
+                <span class="total-price">$0</span>
+                <button class="purchase-btn">COMPRAR</button>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluidnav">
         <nav class="navbar navbar-expand-lg fondo-nav navbar-dark">
-        <!-- Brand/logo -->
+            <!-- Brand/logo -->
             <a class="navbar-brand" href="index.html">
                 <img src="./images/LogoJMR.png" alt="logo" style="width:80px;">
             </a>
@@ -44,6 +59,10 @@
                         <a class="nav-link" href="./Pages/contacto.html">Contactos</a>
                     </li>
                 </ul>
+                <a class="cart-btn">
+                    <i id="cart" class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-quantity">0</span>
+                </a>
             </div>
         </nav>
     </div>
@@ -52,7 +71,8 @@
     <div class="jumbotron col-md-12">
         <h1>Bienvenidos a JMR</h1>
         <p>Tu Máxima Expresión</p>
-        <a href="./Pages/productos.html"><button type="button" class="btn btn-outline-success">Ver Productos</button></a>    
+        <a href="./Pages/productos.html"><button type="button" class="btn btn-outline-success">Ver
+                Productos</button></a>
     </div>
     <!--Jumbotron End-->
     <div class="container-fluid informacion">
@@ -61,7 +81,8 @@
                 <a class="a-info" href=""><i class="fa-solid fa-truck-fast iconinfo"></i><br>Tus envios son gratis !</a>
             </div>
             <div class="info-items col-md-2 col-sm-8 col-8">
-                <a class="a-info" href=""><i class="fa-solid fa-credit-card iconinfo"></i><br>Hasta 6 cuotas interes!</a>
+                <a class="a-info" href=""><i class="fa-solid fa-credit-card iconinfo"></i><br>Hasta 6 cuotas
+                    interes!</a>
             </div>
             <div class="info-items col-md-2 col-sm-8 col-8">
                 <a class="a-info" href=""><i class="fa-solid fa-shield iconinfo"></i><br>Tus compras son seguras!</a>
@@ -75,7 +96,7 @@
     <div class="container-fluid " data-aos="fade-left" data-aos-duration="1500">
         <div class="row" id="contenedor-productos">
         </div>
-    </div>  
+    </div>
     <!-- END Productos -->
     <!-- Productos Destacados END -->
     <!-- Footer Start -->
@@ -86,7 +107,8 @@
                     <img src="Images/LogoJMR.png" alt="">
                 </div>
                 <div class="terms">
-                    Somos una empresa con mas de 10 años de trayectoria.Ubicada en la ciudad de San Fernando del Valle de Catamarca
+                    Somos una empresa con mas de 10 años de trayectoria.Ubicada en la ciudad de San Fernando del Valle
+                    de Catamarca
                 </div>
             </div>
             <div class="box__footer">
@@ -97,8 +119,10 @@
 
             <div class="box__footer">
                 <h2 class="footer-h2">Redes Sociales</h2>
-                <a href="https://www.facebook.com/JMRmarroquineria" target="_blank"><i class="fab fa-facebook-square"></i> Facebook</a>
-                <a href="https://www.instagram.com/marroquineriajmr/" target="_blank"><i class="fab fa-instagram-square"></i> Instagram</a>
+                <a href="https://www.facebook.com/JMRmarroquineria" target="_blank"><i
+                        class="fab fa-facebook-square"></i> Facebook</a>
+                <a href="https://www.instagram.com/marroquineriajmr/" target="_blank"><i
+                        class="fab fa-instagram-square"></i> Instagram</a>
             </div>
         </div>
 
