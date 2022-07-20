@@ -68,39 +68,42 @@ function agregarCarrito(e){
     let prodID = producto.getAttribute("id")
     let prodName = producto.querySelector("h4").innerText;
     let precio = producto.querySelector(".product-prize").innerText;
-    // let imagen = producto.querySelector("img").src;
-    // console.log(imagen);
-    agregarElemento(prodID,prodName,precio)
+    //No me lee el src
+    let imagen = producto.querySelector("img").src;
+    console.log(imagen);
+    agregarElemento(prodID,prodName,precio,imagen)
 }
 
-function agregarElemento(prodID,prodName,precio,imagen){
-    let productRow = document.createElement("div");
-    let contenedorProductos = document.querySelector(".product-rows");
-    let elemProducto = `
-        <div class="product-row" id="${prodID}">
-            <span>${prodName}</span>
-            <span class="cart-price">${precio}</span>
-            <button class="remove-btn">Borrar</button>
-        </div>
-    `
-    productRow.innerHTML = elemProducto;
-    contenedorProductos.append(productRow);
-    let botonesBorrar = productRow.querySelectorAll(".remove-btn");
-    for(let boton of botonesBorrar) {
-        boton.addEventListener("click", borrarElemento);
-    }
-    cantElementosCarrito();
-}
 
-function borrarElemento(e) {
-    btn = e.target;
-    btn.parentElement.parentElement.remove();
-    cantElementosCarrito()
-}
 
-function cantElementosCarrito() {
-    let cantidad = document.querySelectorAll(".product-rows > div");
-    let cartQuantity = document.querySelector(".cart-quantity");
-    cartQuantity.innerText = cantidad.length;
+// function agregarElemento(prodID,prodName,precio,imagen){
+//     let productRow = document.createElement("div");
+//     let contenedorProductos = document.querySelector(".product-rows");
+//     let elemProducto = `
+//         <div class="product-row" id="${prodID}">
+//             <span>${prodName}</span>
+//             <span class="cart-price">${precio}</span>
+//             <button class="remove-btn">Borrar</button>
+//         </div>
+//     `
+//     productRow.innerHTML = elemProducto;
+//     contenedorProductos.append(productRow);
+//     let botonesBorrar = productRow.querySelectorAll(".remove-btn");
+//     for(let boton of botonesBorrar) {
+//         boton.addEventListener("click", borrarElemento);
+//     }
+//     cantElementosCarrito();
+// }
 
-}
+// function borrarElemento(e) {
+//     btn = e.target;
+//     btn.parentElement.parentElement.remove();
+//     cantElementosCarrito()
+// }
+
+// function cantElementosCarrito() {
+//     let cantidad = document.querySelectorAll(".product-rows > div");
+//     let cartQuantity = document.querySelector(".cart-quantity");
+//     cartQuantity.innerText = cantidad.length;
+
+// }
